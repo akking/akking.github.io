@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Minimum Size Subarray Sum | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
+Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+Can we do better?
+Two pointerUse a end pointer to indicate the e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Minimum Size Subarray Sum">
+<meta property="og:url" content="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
+Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+Can we do better?
+Two pointerUse a end pointer to indicate the e">
+<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Minimum Size Subarray Sum">
+<meta name="twitter:description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
+Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+Can we do better?
+Two pointerUse a end pointer to indicate the e">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-minimum-size-subarray-sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/18/minimum-size-subarray-sum/" class="article-date">
+  <time datetime="2016-08-18T19:34:45.000Z" itemprop="datePublished">2016-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Minimum Size Subarray Sum
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
+<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>Use <em>backtracking</em> to try every possible subarray. <code>O(n!)</code> complexity.</p>
+<p>Can we do better?</p>
+<h2 id="Two-pointer"><a href="#Two-pointer" class="headerlink" title="Two pointer"></a>Two pointer</h2><p>Use a <code>end</code> pointer to indicate the end index for the subarray; initially <code>start</code> is 0, if the sum of subarray is larger than <code>s</code>, gradually increase the <code>start</code> to make the subarray shorter. The <code>end</code> will traverse through the array giving out every possible subarray.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>, sum = <span class="number">0</span>; <span class="comment">// sum is the sum of subarray</span></div><div class="line"><span class="comment">// initialize the size of minimum subarray as max value</span></div><div class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</div><div class="line"><span class="keyword">while</span> (end &lt; nums.length) &#123;</div><div class="line">    sum += nums[end];</div><div class="line">    end++;</div><div class="line">    <span class="keyword">while</span> (sum &gt;= s) &#123;</div><div class="line">    <span class="comment">// if sum is larger than s, it's possible to "squeze" space of the subarray, hence, increase the start index</span></div><div class="line">        min = Math.min(min, end - start); <span class="comment">// no doubt there is a min</span></div><div class="line">        sum -= nums[start];</div><div class="line">        start++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> min == Integer.MAX_VALUE ? <span class="number">0</span> : min; </div><div class="line"><span class="comment">// if min is unchanged, then there's no such subarray such that sum &gt;= s</span></div></pre></td></tr></table></figure>
+<h3 id="Thought-about-two-pointers"><a href="#Thought-about-two-pointers" class="headerlink" title="Thought about two pointers"></a>Thought about two pointers</h3><p>Two pointers method is such a beautiful and elegant solution for many questions, however it is hard to come up with.</p>
+<p>Basically, max, min subarray problem can be solved by two pointers each points to the start and end subarray.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/" data-id="ciw8duywy000lab62p81puqfq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/18/add-and-search-word-data-structure-design/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          211. Add and Search Word - Data structure design
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/18/course-schedule/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Course Schedule</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/02/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
