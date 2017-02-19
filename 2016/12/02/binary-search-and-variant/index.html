@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Binary Search related topics | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
-1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target, min(index)* in another word">
+  <meta name="description" content="Binary Search related topicslower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
+1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binary Search related topics">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/12/02/binary-search-and-variant/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="lower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
-1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target, min(index)* in another word">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="Binary Search related topicslower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
+1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target,">
+<meta property="og:updated_time" content="2016-12-02T17:56:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Binary Search related topics">
-<meta name="twitter:description" content="lower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
-1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target, min(index)* in another word">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="Binary Search related topicslower/upper bound定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.
+1234567891011121314151617181920212223242526272829303132333435/** nums[index] &amp;gt;= target,">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +40,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -76,29 +76,19 @@
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Binary Search related topics
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="lower-upper-bound"><a href="#lower-upper-bound" class="headerlink" title="lower/upper bound"></a>lower/upper bound</h2><p>定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">* nums[index] &gt;= target, min(index)</div><div class="line">* in another word: return the smallest index of nums[index] that &gt;= target</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lowerBound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> lb = -<span class="number">1</span>, ub = nums.length;</div><div class="line">    <span class="keyword">while</span> (lb + <span class="number">1</span> &lt; ub) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lb + (ub - lb) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</div><div class="line">            lb = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            ub = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> lb + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">* nums[index] &lt;= target, max(index)</div><div class="line">* in another word: return the largest index that nums[index] &lt;= target</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">upperBound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> lb = -<span class="number">1</span>, ub = nums.length;</div><div class="line">    <span class="keyword">while</span> (lb + <span class="number">1</span> &lt; ub) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lb + (ub - lb) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</div><div class="line">            ub = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            lb = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ub - <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="Binary-Search-related-topics"><a href="#Binary-Search-related-topics" class="headerlink" title="Binary Search related topics"></a>Binary Search related topics</h1><h2 id="lower-upper-bound"><a href="#lower-upper-bound" class="headerlink" title="lower/upper bound"></a>lower/upper bound</h2><p>定义 lower bound 为在给定升序数组中大于等于目标值的最小索引，upper bound 则为小于等于目标值的最大索引.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">* nums[index] &gt;= target, min(index)</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lowerBound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> lb = -<span class="number">1</span>, ub = nums.length;</div><div class="line">    <span class="keyword">while</span> (lb + <span class="number">1</span> &lt; ub) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lb + (ub - lb) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</div><div class="line">            lb = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            ub = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> lb + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">* nums[index] &lt;= target, max(index)</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">upperBound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> lb = -<span class="number">1</span>, ub = nums.length;</div><div class="line">    <span class="keyword">while</span> (lb + <span class="number">1</span> &lt; ub) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lb + (ub - lb) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</div><div class="line">            ub = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            lb = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ub - <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="first-last-occurrences"><a href="#first-last-occurrences" class="headerlink" title="first/last occurrences"></a>first/last occurrences</h2><p>Last occurrence:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> nums: An integer array sorted in ascending order</div><div class="line">     * <span class="doctag">@param</span> target: An integer</div><div class="line">     * <span class="doctag">@return</span> an integer</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lastPosition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> end = nums.length -<span class="number">1</span>;</div><div class="line">         <span class="comment">//[1,2,2,4,5,5] 2</span></div><div class="line">        <span class="keyword">while</span>(start+<span class="number">1</span> &lt; end)&#123;</div><div class="line">            <span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)&#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                start = mid;<span class="comment">//这里不用return mid;而是采取赋值缩小范围</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nums[end] == target)&#123;</div><div class="line">            <span class="keyword">return</span> end;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nums[start] == target)&#123;</div><div class="line">            <span class="keyword">return</span> start;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>First occurrence:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> nums: The integer array.</div><div class="line">     * <span class="doctag">@param</span> target: Target to find.</div><div class="line">     * <span class="doctag">@return</span>: The first position of target. Position starts from 0.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearchForFirstOccurrence</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="comment">//write your code here</span></div><div class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length ==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, end = nums.length -<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(start+<span class="number">1</span>&lt;end)&#123;</div><div class="line">            <span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)&#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nums[start] == target)&#123;</div><div class="line">            <span class="keyword">return</span> start;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nums[end] == target)&#123;</div><div class="line">            <span class="keyword">return</span> end;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> nums: The integer array.</div><div class="line">     * <span class="doctag">@param</span> target: Target to find.</div><div class="line">     * <span class="doctag">@return</span>: The first position of target. Position starts from 0.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="comment">//write your code here</span></div><div class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length ==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, end = nums.length -<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(start+<span class="number">1</span>&lt;end)&#123;</div><div class="line">            <span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</div><div class="line">                start = mid;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)&#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nums[start] == target)&#123;</div><div class="line">            <span class="keyword">return</span> start;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nums[end] == target)&#123;</div><div class="line">            <span class="keyword">return</span> end;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/02/binary-search-and-variant/" data-id="ciw8dvlf20002bs62yrf0gvlm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/12/02/binary-search-and-variant/" data-id="cizc3hnas0009gawvjcr2vie9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +97,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/02/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
-  
   
     <a href="/2016/12/02/31-next-permutation/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">31. Next Permutation</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -156,23 +137,23 @@
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -187,7 +168,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

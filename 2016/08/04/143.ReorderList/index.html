@@ -3,23 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>143. Reorder List | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/reorder-list/
-solution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123">
+  <meta name="description" content="143. Reorder Listsolution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123; *     int val; *     List">
 <meta property="og:type" content="article">
-<meta property="og:title" content="143. Reorder List">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/04/143.ReorderList/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/reorder-list/
-solution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="143. Reorder Listsolution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123; *     int val; *     List">
+<meta property="og:updated_time" content="2016-08-04T18:54:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="143. Reorder List">
-<meta name="twitter:description" content="https://leetcode.com/problems/reorder-list/
-solution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="143. Reorder Listsolution:12345678910111213141516171819202122232425262728293031323334353637383940414243/** * Definition for singly-linked list. * public class ListNode &amp;#123; *     int val; *     List">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +37,7 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -76,20 +73,9 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      143. Reorder List
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">https://leetcode.com/problems/reorder-list/</a></p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution:"></a>solution:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public void reorderList(ListNode head) &#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        ListNode slow = head, fast = head;</div><div class="line">        while (fast.next != null &amp;&amp; fast.next.next != null) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next.next;</div><div class="line">        &#125;</div><div class="line">        // slow is end of first part of list</div><div class="line">        ListNode sndHead = reverse(slow.next);</div><div class="line">        slow.next = null;</div><div class="line">        while (sndHead != null) &#123;</div><div class="line">            ListNode headNext = head.next;</div><div class="line">            head.next = sndHead;</div><div class="line">            ListNode sndHeadNext = sndHead.next;</div><div class="line">            sndHead.next = headNext;</div><div class="line">            head = headNext;</div><div class="line">            sndHead = sndHeadNext;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    private ListNode reverse(ListNode node) &#123;</div><div class="line">        // reverse linked list from node to the end, return the new head</div><div class="line">        ListNode prev = null, next = null, current = node;</div><div class="line">        while (current != null) &#123;</div><div class="line">            next = current.next;</div><div class="line">            current.next = prev;</div><div class="line">            prev = current;</div><div class="line">            current = next;</div><div class="line">        &#125;</div><div class="line">        return prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="143-Reorder-List"><a href="#143-Reorder-List" class="headerlink" title="143. Reorder List"></a><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">143. Reorder List</a></h1><h2 id="solution"><a href="#solution" class="headerlink" title="solution:"></a>solution:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public void reorderList(ListNode head) &#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        ListNode slow = head, fast = head;</div><div class="line">        while (fast.next != null &amp;&amp; fast.next.next != null) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next.next;</div><div class="line">        &#125;</div><div class="line">        // slow is end of first part of list</div><div class="line">        ListNode sndHead = reverse(slow.next);</div><div class="line">        slow.next = null;</div><div class="line">        while (sndHead != null) &#123;</div><div class="line">            ListNode headNext = head.next;</div><div class="line">            head.next = sndHead;</div><div class="line">            ListNode sndHeadNext = sndHead.next;</div><div class="line">            sndHead.next = headNext;</div><div class="line">            head = headNext;</div><div class="line">            sndHead = sndHeadNext;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    private ListNode reverse(ListNode node) &#123;</div><div class="line">        // reverse linked list from node to the end, return the new head</div><div class="line">        ListNode prev = null, next = null, current = node;</div><div class="line">        while (current != null) &#123;</div><div class="line">            next = current.next;</div><div class="line">            current.next = prev;</div><div class="line">            prev = current;</div><div class="line">            current = next;</div><div class="line">        &#125;</div><div class="line">        return prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-steps"><a href="#3-steps" class="headerlink" title="3 steps:"></a>3 steps:</h2><ol>
 <li>find the middle point which seperates the list into two parts</li>
 <li>reverse the 2nd part of list</li>
@@ -100,7 +86,7 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/04/143.ReorderList/" data-id="ciw8duyva0002ab6287d1buqo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/04/143.ReorderList/" data-id="cizc3hna90001gawvv4n1uhsi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,7 +99,7 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          147. Insertion Sort List
+          (no title)
         
       </div>
     </a>
@@ -121,7 +107,7 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
   
     <a href="/2016/08/04/ReverseLinkedListII/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Reverse Linked List II</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -158,23 +144,23 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -189,7 +175,7 @@ solution:12345678910111213141516171819202122232425262728293031323334353637383940
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

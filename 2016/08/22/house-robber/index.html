@@ -3,26 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>House Robber | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/house-robber/
-recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t rob ith house. Then:
-1">
+  <meta name="description" content="(198. House Robber)[https://leetcode.com/problems/house-robber/]recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t ro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="House Robber">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/22/house-robber/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/house-robber/
-recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t rob ith house. Then:
-1">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="(198. House Robber)[https://leetcode.com/problems/house-robber/]recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t ro">
+<meta property="og:updated_time" content="2016-08-22T15:10:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="House Robber">
-<meta name="twitter:description" content="https://leetcode.com/problems/house-robber/
-recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t rob ith house. Then:
-1">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="(198. House Robber)[https://leetcode.com/problems/house-robber/]recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith house, rob(i, 0) as max money we can get if we don’t ro">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +37,7 @@ recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -79,20 +73,9 @@ recursive functionDefine rob(i, 1) as the max money we can get if we rob the ith
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      House Robber
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a></p>
-<h2 id="recursive-function"><a href="#recursive-function" class="headerlink" title="recursive function"></a>recursive function</h2><p>Define <code>rob(i, 1)</code> as the max money we can get if we <em>rob</em> the <code>ith</code> house, <code>rob(i, 0)</code> as max money we can get if we don’t rob ith house. Then:</p>
+        <h1 id="198-House-Robber-https-leetcode-com-problems-house-robber"><a href="#198-House-Robber-https-leetcode-com-problems-house-robber" class="headerlink" title="(198. House Robber)[https://leetcode.com/problems/house-robber/]"></a>(198. House Robber)[<a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a>]</h1><h2 id="recursive-function"><a href="#recursive-function" class="headerlink" title="recursive function"></a>recursive function</h2><p>Define <code>rob(i, 1)</code> as the max money we can get if we <em>rob</em> the <code>ith</code> house, <code>rob(i, 0)</code> as max money we can get if we don’t rob ith house. Then:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rob(i, <span class="number">1</span>) = rob(i - <span class="number">1</span>, <span class="number">0</span>) + nums[i] <span class="comment">// i-1 th house can't be robbed</span></div><div class="line">rob(i, <span class="number">0</span>) = max(rob(i - <span class="number">1</span>, <span class="number">1</span>), rob(i - <span class="number">1</span>, <span class="number">0</span>)) <span class="comment">// doesn't matter if i-1 th hosue is robbed</span></div></pre></td></tr></table></figure>
 <p>Then, based on the idea above:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">1</span>) &#123;</div><div class="line">         reurn <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Math.max(rob(nums, nums.length - <span class="number">1</span>, <span class="number">1</span>), rob(nums, nums.length - <span class="number">1</span>, <span class="number">0</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> num, <span class="keyword">int</span> rob)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (rob == <span class="number">1</span>) &#123;</div><div class="line">           reuturn nums[<span class="number">0</span>];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (rob == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> Math.max(rob(nums, num - <span class="number">1</span>, <span class="number">0</span>), rob(nums, num - <span class="number">1</span>, <span class="number">1</span>));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> rob(nums, num - <span class="number">1</span>, <span class="number">0</span>) + nums[num];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -106,7 +89,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/house-robber/" data-id="ciw8duywn000gab62nit2v056" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/house-robber/" data-id="cizc3hnbk000mgawv4mz3kmls" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,7 +102,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Count Complete Tree Nodes
+          (no title)
         
       </div>
     </a>
@@ -127,7 +110,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   
     <a href="/2016/08/18/add-and-search-word-data-structure-design/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">211. Add and Search Word - Data structure design</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -164,23 +147,23 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -195,7 +178,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>306.Additive Number | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/additive-number/
-If we have first number and second one, the rest of numbers are determined.
-So we just select first and second number as many as possible and examine if">
+  <meta name="description" content="306. Additive NumberIf we have first number and second one, the rest of numbers are determined.
+So we just select first and second number as many as possible and examine if the rest of the number isth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="306.Additive Number">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/30/additive-number/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/additive-number/
-If we have first number and second one, the rest of numbers are determined.
-So we just select first and second number as many as possible and examine if">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="306. Additive NumberIf we have first number and second one, the rest of numbers are determined.
+So we just select first and second number as many as possible and examine if the rest of the number isth">
+<meta property="og:updated_time" content="2016-08-30T14:59:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="306.Additive Number">
-<meta name="twitter:description" content="https://leetcode.com/problems/additive-number/
-If we have first number and second one, the rest of numbers are determined.
-So we just select first and second number as many as possible and examine if">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="306. Additive NumberIf we have first number and second one, the rest of numbers are determined.
+So we just select first and second number as many as possible and examine if the rest of the number isth">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +40,7 @@ So we just select first and second number as many as possible and examine if">
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -79,27 +76,16 @@ So we just select first and second number as many as possible and examine if">
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      306.Additive Number
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/additive-number/" target="_blank" rel="external">https://leetcode.com/problems/additive-number/</a></p>
-<p>If we have first number and second one, the rest of numbers are <strong>determined</strong>.</p>
+        <h1 id="306-Additive-Number"><a href="#306-Additive-Number" class="headerlink" title="306. Additive Number"></a><a href="https://leetcode.com/problems/additive-number/" target="_blank" rel="external">306. Additive Number</a></h1><p>If we have first number and second one, the rest of numbers are <strong>determined</strong>.</p>
 <p>So we just select first and second number as many as possible and examine if the rest of the number is<br>the ones we want. Noted that the total length of the first and second number should be no more than the<br>rest of the numbers because addition only increase the length of the number. To prevent overflow from<br>large integer, we can use <code>BigInteger</code> since it supports arbitrary-precision integers.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.math.BigInteger;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAdditiveNumber</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = num.length();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n / <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="comment">// i stops before midpoint because the length of result that i plus something &gt;= 0 need</span></div><div class="line">            <span class="comment">// to be &gt;= i.</span></div><div class="line">            <span class="keyword">if</span> (num.charAt(<span class="number">0</span>) == <span class="string">'0'</span> &amp;&amp; i &gt; <span class="number">1</span>) &#123;</div><div class="line">                <span class="comment">// number with leading 0 is not valid, but 0 alone is a valid number</span></div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            BigInteger i1 = <span class="keyword">new</span> BigInteger(num.substring(<span class="number">0</span>, i));</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; Math.max(i, j) &lt;= n - i - j; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (num.charAt(i) == <span class="string">'0'</span> &amp;&amp; j &gt; <span class="number">1</span>) &#123;</div><div class="line">                    <span class="comment">// 0 alone is valid number but number with leading 0 is not valid, check next</span></div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                BigInteger i2 = <span class="keyword">new</span> BigInteger(num.substring(i, i + j));</div><div class="line">                <span class="keyword">if</span> (isValid(i1, i2, num, i + j)) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(BigInteger i1, BigInteger i2, String num, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start == num.length()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        i2 = i2.add(i1); <span class="comment">// target number</span></div><div class="line">        i1 = i2.subtract(i1);</div><div class="line">        String target = i2.toString();</div><div class="line">        <span class="keyword">if</span> (num.startsWith(target, start)) &#123;</div><div class="line">            <span class="keyword">return</span> isValid(i1, i2, num, start + target.length());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/30/additive-number/" data-id="ciw8dvlf00001bs628xahcwkd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/30/additive-number/" data-id="cizc3hnam0007gawv76u5clp3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,7 +106,7 @@ So we just select first and second number as many as possible and examine if">
   
     <a href="/2016/08/29/perfect-squares/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Perfect Squares</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -157,23 +143,23 @@ So we just select first and second number as many as possible and examine if">
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -188,7 +174,7 @@ So we just select first and second number as many as possible and examine if">
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

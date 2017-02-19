@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>201. Bitwise AND of Numbers Range | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/bitwise-and-of-numbers-range/
-BrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
-Revision 1To bitwise and two number n1 and n2 is to take the commo">
+  <meta name="description" content="201. Bitwise AND of Numbers RangeBrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
+Revision 1To bitwise and two number n1 and n2 is to take the common set bits. eg: 1100 &amp;amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="201. Bitwise AND of Numbers Range">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/12/bitwise-and-of-numbers-range/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/bitwise-and-of-numbers-range/
-BrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
-Revision 1To bitwise and two number n1 and n2 is to take the commo">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="201. Bitwise AND of Numbers RangeBrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
+Revision 1To bitwise and two number n1 and n2 is to take the common set bits. eg: 1100 &amp;amp;">
+<meta property="og:updated_time" content="2016-08-12T14:35:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="201. Bitwise AND of Numbers Range">
-<meta name="twitter:description" content="https://leetcode.com/problems/bitwise-and-of-numbers-range/
-BrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
-Revision 1To bitwise and two number n1 and n2 is to take the commo">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="201. Bitwise AND of Numbers RangeBrutalUse loop for every number between m and n, &amp;amp; together. O(n - m)
+Revision 1To bitwise and two number n1 and n2 is to take the common set bits. eg: 1100 &amp;amp;">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +40,7 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -79,20 +76,9 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      201. Bitwise AND of Numbers Range
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="external">https://leetcode.com/problems/bitwise-and-of-numbers-range/</a></p>
-<h2 id="Brutal"><a href="#Brutal" class="headerlink" title="Brutal"></a>Brutal</h2><p>Use loop for every number between m and n, <code>&amp;</code> together. <code>O(n - m)</code></p>
+        <h1 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="external">201. Bitwise AND of Numbers Range</a></h1><h2 id="Brutal"><a href="#Brutal" class="headerlink" title="Brutal"></a>Brutal</h2><p>Use loop for every number between m and n, <code>&amp;</code> together. <code>O(n - m)</code></p>
 <h2 id="Revision-1"><a href="#Revision-1" class="headerlink" title="Revision 1"></a>Revision 1</h2><p>To bitwise <code>and</code> two number <code>n1</code> and <code>n2</code> is to take the common set bits. eg: <code>1100 &amp; 1011 = 1000</code>.<br>So, we only need to find the common <code>1s</code> for all of the number from <code>m</code> to <code>n</code>:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> shift = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (n != m) &#123;</div><div class="line">    n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    m &gt;&gt;= <span class="number">1</span>; <span class="comment">// right shift n and m together at the same time, </span></div><div class="line">    shift++; <span class="comment">// if n == m, then it is the common "are" they have</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> n &lt;&lt; shift;</div></pre></td></tr></table></figure>
 <h2 id="Revision-2"><a href="#Revision-2" class="headerlink" title="Revision 2"></a>Revision 2</h2><p>Like the <a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">number-of-1-bits</a><br>The <code>n &amp; (n - 1)</code> will remove the right most <code>set bit</code> to <code>0</code>, this is like moving one step<br>closer to <code>m</code>. Or, in other word, making it more “alike” to <code>m</code>.</p>
@@ -101,7 +87,7 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/bitwise-and-of-numbers-range/" data-id="ciw8duyvd0003ab62aoorw0oo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/12/bitwise-and-of-numbers-range/" data-id="cizc3hnaw000bgawv13yefxa8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,7 +100,7 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Happy Number
+          (no title)
         
       </div>
     </a>
@@ -122,7 +108,7 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
   
     <a href="/2016/08/11/number-of-1-bits/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Number of 1 Bits</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -159,23 +145,23 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -190,7 +176,7 @@ Revision 1To bitwise and two number n1 and n2 is to take the commo">
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

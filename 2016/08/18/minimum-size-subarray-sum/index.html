@@ -3,29 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Minimum Size Subarray Sum | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
-Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+  <meta name="description" content="209. Minimum Size Subarray SumBrutal forceUse backtracking to try every possible subarray. O(n!) complexity.
 Can we do better?
-Two pointerUse a end pointer to indicate the e">
+Two pointerUse a end pointer to indicate the end index for the subarray;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Minimum Size Subarray Sum">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
-Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="209. Minimum Size Subarray SumBrutal forceUse backtracking to try every possible subarray. O(n!) complexity.
 Can we do better?
-Two pointerUse a end pointer to indicate the e">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+Two pointerUse a end pointer to indicate the end index for the subarray;">
+<meta property="og:updated_time" content="2016-08-18T19:34:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Minimum Size Subarray Sum">
-<meta name="twitter:description" content="https://leetcode.com/problems/minimum-size-subarray-sum/
-Brutal forceUse backtracking to try every possible subarray. O(n!) complexity.
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="209. Minimum Size Subarray SumBrutal forceUse backtracking to try every possible subarray. O(n!) complexity.
 Can we do better?
-Two pointerUse a end pointer to indicate the e">
+Two pointerUse a end pointer to indicate the end index for the subarray;">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -46,7 +43,7 @@ Two pointerUse a end pointer to indicate the e">
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -82,20 +79,9 @@ Two pointerUse a end pointer to indicate the e">
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Minimum Size Subarray Sum
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
-<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>Use <em>backtracking</em> to try every possible subarray. <code>O(n!)</code> complexity.</p>
+        <h1 id="209-Minimum-Size-Subarray-Sum"><a href="#209-Minimum-Size-Subarray-Sum" class="headerlink" title="209. Minimum Size Subarray Sum"></a><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">209. Minimum Size Subarray Sum</a></h1><h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>Use <em>backtracking</em> to try every possible subarray. <code>O(n!)</code> complexity.</p>
 <p>Can we do better?</p>
 <h2 id="Two-pointer"><a href="#Two-pointer" class="headerlink" title="Two pointer"></a>Two pointer</h2><p>Use a <code>end</code> pointer to indicate the end index for the subarray; initially <code>start</code> is 0, if the sum of subarray is larger than <code>s</code>, gradually increase the <code>start</code> to make the subarray shorter. The <code>end</code> will traverse through the array giving out every possible subarray.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>, sum = <span class="number">0</span>; <span class="comment">// sum is the sum of subarray</span></div><div class="line"><span class="comment">// initialize the size of minimum subarray as max value</span></div><div class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</div><div class="line"><span class="keyword">while</span> (end &lt; nums.length) &#123;</div><div class="line">    sum += nums[end];</div><div class="line">    end++;</div><div class="line">    <span class="keyword">while</span> (sum &gt;= s) &#123;</div><div class="line">    <span class="comment">// if sum is larger than s, it's possible to "squeze" space of the subarray, hence, increase the start index</span></div><div class="line">        min = Math.min(min, end - start); <span class="comment">// no doubt there is a min</span></div><div class="line">        sum -= nums[start];</div><div class="line">        start++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> min == Integer.MAX_VALUE ? <span class="number">0</span> : min; </div><div class="line"><span class="comment">// if min is unchanged, then there's no such subarray such that sum &gt;= s</span></div></pre></td></tr></table></figure>
@@ -105,7 +91,7 @@ Two pointerUse a end pointer to indicate the e">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/" data-id="ciw8duywy000lab62p81puqfq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/" data-id="cizc3hnbm000ngawvdaybrwpk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,7 +104,7 @@ Two pointerUse a end pointer to indicate the e">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          211. Add and Search Word - Data structure design
+          (no title)
         
       </div>
     </a>
@@ -126,7 +112,7 @@ Two pointerUse a end pointer to indicate the e">
   
     <a href="/2016/08/18/course-schedule/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Course Schedule</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -163,23 +149,23 @@ Two pointerUse a end pointer to indicate the e">
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -194,7 +180,7 @@ Two pointerUse a end pointer to indicate the e">
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

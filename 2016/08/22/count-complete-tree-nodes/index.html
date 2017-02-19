@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Count Complete Tree Nodes | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/count-complete-tree-nodes/
-Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
-123456public class Solutio">
+  <meta name="description" content="222. Count Complete Tree NodesBrutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solution &amp;#123;    public int coun">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Count Complete Tree Nodes">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/22/count-complete-tree-nodes/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/count-complete-tree-nodes/
-Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
-123456public class Solutio">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="222. Count Complete Tree NodesBrutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solution &amp;#123;    public int coun">
+<meta property="og:updated_time" content="2016-08-22T16:04:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Count Complete Tree Nodes">
-<meta name="twitter:description" content="https://leetcode.com/problems/count-complete-tree-nodes/
-Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
-123456public class Solutio">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="222. Count Complete Tree NodesBrutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solution &amp;#123;    public int coun">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +40,7 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -79,20 +76,9 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Count Complete Tree Nodes
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="external">https://leetcode.com/problems/count-complete-tree-nodes/</a></p>
-<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>If we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:</p>
+        <h1 id="222-Count-Complete-Tree-Nodes"><a href="#222-Count-Complete-Tree-Nodes" class="headerlink" title="222. Count Complete Tree Nodes"></a><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="external">222. Count Complete Tree Nodes</a></h1><h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>If we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + countNodes(root.left) + countNodes(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>The complexity is <code>O(n)</code> n is the number of nodes in the tree.</p>
 <h2 id="Better-one"><a href="#Better-one" class="headerlink" title="Better one"></a>Better one</h2><p>Since we know the tree is a complete binary tree, only the leaf nodes are not full. Hence, the number of nodes of every level of the tree except the last one is <code>2^d</code>, d is the depth of the node.</p>
@@ -108,7 +94,7 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/count-complete-tree-nodes/" data-id="ciw8duyvr0005ab62a2rmaj6n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/count-complete-tree-nodes/" data-id="cizc3hnb2000dgawvpmi26jp1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,7 +107,7 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Binary Tree Preorder Traversal
+          (no title)
         
       </div>
     </a>
@@ -129,7 +115,7 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
   
     <a href="/2016/08/22/house-robber/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">House Robber</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -166,23 +152,23 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -197,7 +183,7 @@ Brutal forceIf we ignore the fact that the tree is complete, then we just count 
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -5,24 +5,16 @@
   
   <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="153. Find Minimum in Rotated Sorted ArrayWe can still use binary search on on the rotated sorted array. Draw a picture will help to visualize the situations: (borrowed from outside)
-
-12345678910111213">
+  <meta name="description" content="242. Valid Anagram">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dongyan Li's Notebook">
-<meta property="og:url" content="http://yoursite.com/2016/08/05/find-minimum-in-rotated-sorted-array/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/08/29/valid-anagram/index.html">
 <meta property="og:site_name" content="Dongyan Li's Notebook">
-<meta property="og:description" content="153. Find Minimum in Rotated Sorted ArrayWe can still use binary search on on the rotated sorted array. Draw a picture will help to visualize the situations: (borrowed from outside)
-
-12345678910111213">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/883457/201603/883457-20160319095026881-33484184.png">
-<meta property="og:updated_time" content="2016-08-05T16:48:35.000Z">
+<meta property="og:description" content="242. Valid Anagram">
+<meta property="og:updated_time" content="2016-08-29T17:23:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dongyan Li's Notebook">
-<meta name="twitter:description" content="153. Find Minimum in Rotated Sorted ArrayWe can still use binary search on on the rotated sorted array. Draw a picture will help to visualize the situations: (borrowed from outside)
-
-12345678910111213">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/883457/201603/883457-20160319095026881-33484184.png">
+<meta name="twitter:description" content="242. Valid Anagram">
   
     <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
@@ -71,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-find-minimum-in-rotated-sorted-array" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-valid-anagram" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/05/find-minimum-in-rotated-sorted-array/" class="article-date">
-  <time datetime="2016-08-05T16:48:35.000Z" itemprop="datePublished">2016-08-05</time>
+    <a href="/2016/08/29/valid-anagram/" class="article-date">
+  <time datetime="2016-08-29T17:23:24.000Z" itemprop="datePublished">2016-08-29</time>
 </a>
     
   </div>
@@ -83,14 +75,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="153-Find-Minimum-in-Rotated-Sorted-Array"><a href="#153-Find-Minimum-in-Rotated-Sorted-Array" class="headerlink" title="153. Find Minimum in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="external">153. Find Minimum in Rotated Sorted Array</a></h1><p>We can still use binary search on on the rotated sorted array. Draw a picture will help to visualize the situations: (borrowed from outside)</p>
-<p><img src="http://images2015.cnblogs.com/blog/883457/201603/883457-20160319095026881-33484184.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int findMin(int[] nums) &#123;</div><div class="line">        int start = 0;</div><div class="line">        int end = nums.length - 1;</div><div class="line">        int mid = 0;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            mid = start + (end - start) / 2;</div><div class="line">            if (mid &gt; 0 &amp;&amp; nums[mid] &lt; nums[mid - 1]) &#123;</div><div class="line">                return nums[mid];</div><div class="line">            &#125; </div><div class="line">            if (nums[mid] &gt; nums[end] &amp;&amp; nums[mid] &gt;= nums[start]) &#123;</div><div class="line">                start = mid;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return nums[start] &gt; nums[end] ? nums[end] : nums[start];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242. Valid Anagram"></a><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" rel="external">242. Valid Anagram</a></h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/find-minimum-in-rotated-sorted-array/" data-id="cizc3hnba000hgawvyocar0ry" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/29/valid-anagram/" data-id="cizc3hnby000ugawvbjr9vfoi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,7 +88,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/08/05/excel-sheet-column-title/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/08/29/perfect-squares/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -109,7 +98,7 @@
     </a>
   
   
-    <a href="/2016/08/04/147InsertionSortList/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/23/binary-tree-preorder-traversal/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>

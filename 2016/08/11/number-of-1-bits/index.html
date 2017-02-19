@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Number of 1 Bits | Hexo</title>
+  <title>Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/problems/number-of-1-bits/
-Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n">
+  <meta name="description" content="191. Number of 1 Bits
+Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n: PS: the ending condition">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Number of 1 Bits">
+<meta property="og:title" content="Dongyan Li's Notebook">
 <meta property="og:url" content="http://yoursite.com/2016/08/11/number-of-1-bits/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https://leetcode.com/problems/number-of-1-bits/
-Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n">
-<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="191. Number of 1 Bits
+Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n: PS: the ending condition">
+<meta property="og:updated_time" content="2016-08-11T18:24:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Number of 1 Bits">
-<meta name="twitter:description" content="https://leetcode.com/problems/number-of-1-bits/
-Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="191. Number of 1 Bits
+Version 1We test the number n with bitwise and 1, if the result is equal 1. We know the right mostbit is 1, otherwise, we right shift one more bit for n: PS: the ending condition">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +40,7 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
       </h1>
       
     </div>
@@ -76,19 +76,9 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Number of 1 Bits
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">https://leetcode.com/problems/number-of-1-bits/</a></p>
+        <p><a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">191. Number of 1 Bits</a></p>
 <h2 id="Version-1"><a href="#Version-1" class="headerlink" title="Version 1"></a>Version 1</h2><p>We test the number <code>n</code> with <code>bitwise and 1</code>, if the result is equal <code>1</code>. We know the right most<br>bit is <code>1</code>, otherwise, we right shift one more bit for n: PS: the ending condition for the<br>while loop is <code>n != 0</code> since <code>int</code> in java is always a signed number. We know the loop is<br>over when we right shifted all the <code>1</code>s for <code>n</code>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">// you need to treat n as an unsigned value</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> acc = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> ((n &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</div><div class="line">                acc++;</div><div class="line">            &#125;</div><div class="line">            n &gt;&gt;&gt;= <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> acc;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Version-2-using-n-amp-n-1"><a href="#Version-2-using-n-amp-n-1" class="headerlink" title="Version 2 (using n &amp; (n - 1))"></a>Version 2 (using n &amp; (n - 1))</h2><p>Observing the pattern below:</p>
@@ -119,7 +109,7 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/11/number-of-1-bits/" data-id="ciw8duyx4000nab62cvqnixqg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/11/number-of-1-bits/" data-id="cizc3hnbv000rgawvsd4syrro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +122,7 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          201. Bitwise AND of Numbers Range
+          (no title)
         
       </div>
     </a>
@@ -140,7 +130,7 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
   
     <a href="/2016/08/10/binary-tree-right-side-view/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Binary Tree Right Side View</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -177,23 +167,23 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
       <ul>
         
           <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
+            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
+            <a href="/2016/09/06/note-about-java/">(no title)</a>
           </li>
         
       </ul>
@@ -208,7 +198,7 @@ Version 1We test the number n with bitwise and 1, if the result is equal 1. We k
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
+      &copy; 2017 Dongyan Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
