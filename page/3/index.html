@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,48 +60,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-bitwise-and-of-numbers-range" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/12/bitwise-and-of-numbers-range/" class="article-date">
-  <time datetime="2016-08-12T14:35:55.000Z" itemprop="datePublished">2016-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/12/bitwise-and-of-numbers-range/">201. Bitwise AND of Numbers Range</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="external">https://leetcode.com/problems/bitwise-and-of-numbers-range/</a></p>
-<h2 id="Brutal"><a href="#Brutal" class="headerlink" title="Brutal"></a>Brutal</h2><p>Use loop for every number between m and n, <code>&amp;</code> together. <code>O(n - m)</code></p>
-<h2 id="Revision-1"><a href="#Revision-1" class="headerlink" title="Revision 1"></a>Revision 1</h2><p>To bitwise <code>and</code> two number <code>n1</code> and <code>n2</code> is to take the common set bits. eg: <code>1100 &amp; 1011 = 1000</code>.<br>So, we only need to find the common <code>1s</code> for all of the number from <code>m</code> to <code>n</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> shift = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (n != m) &#123;</div><div class="line">    n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    m &gt;&gt;= <span class="number">1</span>; <span class="comment">// right shift n and m together at the same time, </span></div><div class="line">    shift++; <span class="comment">// if n == m, then it is the common "are" they have</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> n &lt;&lt; shift;</div></pre></td></tr></table></figure>
-<h2 id="Revision-2"><a href="#Revision-2" class="headerlink" title="Revision 2"></a>Revision 2</h2><p>Like the <a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">number-of-1-bits</a><br>The <code>n &amp; (n - 1)</code> will remove the right most <code>set bit</code> to <code>0</code>, this is like moving one step<br>closer to <code>m</code>. Or, in other word, making it more “alike” to <code>m</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeBitwiseAnd</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (n &gt; m) &#123;</div><div class="line">                    n &amp;= n - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">                <span class="keyword">return</span> n;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/bitwise-and-of-numbers-range/" data-id="cizc3lrbw000blbwvsa2ttrl0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-number-of-1-bits" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -156,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/11/number-of-1-bits/" data-id="cizc3lrdi000rlbwv7aefh8ik" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/11/number-of-1-bits/" data-id="cizc3lrdi000rlbwv7aefh8ik" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -195,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/10/binary-tree-right-side-view/" data-id="cizc3lrbs000albwvz2jnrnj1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/10/binary-tree-right-side-view/" data-id="cizc3lrbs000albwvz2jnrnj1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -236,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/10/reverse-bits/" data-id="cizc3lrdo000ulbwvq18ce9j1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/10/reverse-bits/" data-id="cizc3lrdo000ulbwvq18ce9j1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -279,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/10/repeated-dna-sequences/" data-id="cizc3lrdl000tlbwvo69vkzgl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/10/repeated-dna-sequences/" data-id="cizc3lrdl000tlbwvo69vkzgl" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -317,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/maximum-product-subarray/" data-id="cizc3lrd5000olbwvjmi2h1wc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/05/maximum-product-subarray/" data-id="cizc3lrd5000olbwvjmi2h1wc" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -355,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/excel-sheet-column-title/" data-id="cizc3lrcm000hlbwvuggrf1m1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/05/excel-sheet-column-title/" data-id="cizc3lrcm000hlbwvuggrf1m1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -395,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/find-minimum-in-rotated-sorted-array/" data-id="cizc3lrcf000glbwv8mmijy7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/05/find-minimum-in-rotated-sorted-array/" data-id="cizc3lrcf000glbwv8mmijy7e" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -437,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/04/147InsertionSortList/" data-id="cizc3lrb00001lbwv7mx5xddb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/04/147InsertionSortList/" data-id="cizc3lrb00001lbwv7mx5xddb" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -481,7 +439,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/04/143.ReorderList/" data-id="cizc3lrav0000lbwvw3htu56g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/04/143.ReorderList/" data-id="cizc3lrav0000lbwvw3htu56g" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ReverseLinkedListII" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/04/ReverseLinkedListII/" class="article-date">
+  <time datetime="2016-08-04T16:31:12.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/ReverseLinkedListII/">Reverse Linked List II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="external">https://leetcode.com/problems/reverse-linked-list-ii/</a></p>
+<p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
+<p>For example:<br>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</code></p>
+<p>return <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</code></p>
+<p>Note:<br>Given m, n satisfy the following condition:<br>1 ≤ m ≤ n ≤ length of list.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><p>This problem is a “harder” versio of the <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">206. Reverse Linked List</a><br>I followed the idea of <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">206. Reverse Linked List</a> by first find the<br><code>head</code> of the linked list that we need to reverse, then the <code>tail</code>, which is <code>null</code> for the previous qustion. Then start with <code>head</code>,<br>reverse the linkedlist until we reach the <code>tail</code> node:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public ListNode reverseBetween(ListNode head, int m, int n) &#123;</div><div class="line">        ListNode start = head, pre = null, end = head;</div><div class="line">        for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">            if (i &lt; m - 1) &#123;</div><div class="line">                pre = start;</div><div class="line">                start = start.next;</div><div class="line">            &#125;</div><div class="line">            end = end.next;</div><div class="line">        &#125;</div><div class="line">        ListNode newHead = null, current = start, next = null;</div><div class="line">        while (current != end) &#123;</div><div class="line">            next = current.next;</div><div class="line">            current.next = newHead;</div><div class="line">            newHead = current;</div><div class="line">            current = next;</div><div class="line">        &#125;</div><div class="line">        if (pre != null) &#123;</div><div class="line">            pre.next = newHead;</div><div class="line">        &#125; else &#123;</div><div class="line">            head = newHead;</div><div class="line">        &#125;</div><div class="line">        start.next = end;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/04/ReverseLinkedListII/" data-id="cizc3lrbc0005lbwvnd3ma0qn" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -494,7 +495,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 </section>
         
@@ -520,16 +521,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
           </li>
         
           <li>
@@ -542,6 +539,10 @@
         
           <li>
             <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
           </li>
         
       </ul>
@@ -557,7 +558,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Dongyan Li<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

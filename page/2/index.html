@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,46 +60,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-additive-number" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/30/additive-number/" class="article-date">
-  <time datetime="2016-08-30T14:59:43.000Z" itemprop="datePublished">2016-08-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/30/additive-number/">306.Additive Number</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://leetcode.com/problems/additive-number/" target="_blank" rel="external">https://leetcode.com/problems/additive-number/</a></p>
-<p>If we have first number and second one, the rest of numbers are <strong>determined</strong>.</p>
-<p>So we just select first and second number as many as possible and examine if the rest of the number is<br>the ones we want. Noted that the total length of the first and second number should be no more than the<br>rest of the numbers because addition only increase the length of the number. To prevent overflow from<br>large integer, we can use <code>BigInteger</code> since it supports arbitrary-precision integers.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.math.BigInteger;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAdditiveNumber</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = num.length();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n / <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="comment">// i stops before midpoint because the length of result that i plus something &gt;= 0 need</span></div><div class="line">            <span class="comment">// to be &gt;= i.</span></div><div class="line">            <span class="keyword">if</span> (num.charAt(<span class="number">0</span>) == <span class="string">'0'</span> &amp;&amp; i &gt; <span class="number">1</span>) &#123;</div><div class="line">                <span class="comment">// number with leading 0 is not valid, but 0 alone is a valid number</span></div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            BigInteger i1 = <span class="keyword">new</span> BigInteger(num.substring(<span class="number">0</span>, i));</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; Math.max(i, j) &lt;= n - i - j; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (num.charAt(i) == <span class="string">'0'</span> &amp;&amp; j &gt; <span class="number">1</span>) &#123;</div><div class="line">                    <span class="comment">// 0 alone is valid number but number with leading 0 is not valid, check next</span></div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                BigInteger i2 = <span class="keyword">new</span> BigInteger(num.substring(i, i + j));</div><div class="line">                <span class="keyword">if</span> (isValid(i1, i2, num, i + j)) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(BigInteger i1, BigInteger i2, String num, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start == num.length()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        i2 = i2.add(i1); <span class="comment">// target number</span></div><div class="line">        i1 = i2.subtract(i1);</div><div class="line">        String target = i2.toString();</div><div class="line">        <span class="keyword">if</span> (num.startsWith(target, start)) &#123;</div><div class="line">            <span class="keyword">return</span> isValid(i1, i2, num, start + target.length());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/30/additive-number/" data-id="cizc3lrbf0007lbwvcpralvpz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-perfect-squares" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -135,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/29/perfect-squares/" data-id="cizc3lrdj000slbwvh52jtghv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/29/perfect-squares/" data-id="cizc3lrdj000slbwvh52jtghv" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -176,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/23/binary-tree-preorder-traversal/" data-id="cizc3lrbr0009lbwvnyc0ihsb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/23/binary-tree-preorder-traversal/" data-id="cizc3lrbr0009lbwvnyc0ihsb" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -225,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/count-complete-tree-nodes/" data-id="cizc3lrc5000dlbwv2lpd65qc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/count-complete-tree-nodes/" data-id="cizc3lrc5000dlbwv2lpd65qc" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -272,7 +232,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/house-robber/" data-id="cizc3lrcu000klbwvm5p7dpss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/house-robber/" data-id="cizc3lrcu000klbwvm5p7dpss" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -310,7 +270,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/add-and-search-word-data-structure-design/" data-id="cizc3lrbe0006lbwvadddujur" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/add-and-search-word-data-structure-design/" data-id="cizc3lrbe0006lbwvadddujur" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -353,7 +313,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/" data-id="cizc3lrdc000plbwv7qwxvzwc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/minimum-size-subarray-sum/" data-id="cizc3lrdc000plbwv7qwxvzwc" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -403,7 +363,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/course-schedule/" data-id="cizc3lrco000ilbwv9mteocgr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/course-schedule/" data-id="cizc3lrco000ilbwv9mteocgr" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -450,7 +410,7 @@ dp[i][1] = dp[i - 1][0] + nums[i];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/count-primes/" data-id="cizc3lrc9000elbwvx8ukrodb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/12/count-primes/" data-id="cizc3lrc9000elbwvx8ukrodb" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -492,7 +452,49 @@ n = n / 10; // push one position right
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/happy-number/" data-id="cizc3lrcb000flbwvhpjhds4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/12/happy-number/" data-id="cizc3lrcb000flbwvhpjhds4a" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bitwise-and-of-numbers-range" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/12/bitwise-and-of-numbers-range/" class="article-date">
+  <time datetime="2016-08-12T14:35:55.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/bitwise-and-of-numbers-range/">201. Bitwise AND of Numbers Range</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="external">https://leetcode.com/problems/bitwise-and-of-numbers-range/</a></p>
+<h2 id="Brutal"><a href="#Brutal" class="headerlink" title="Brutal"></a>Brutal</h2><p>Use loop for every number between m and n, <code>&amp;</code> together. <code>O(n - m)</code></p>
+<h2 id="Revision-1"><a href="#Revision-1" class="headerlink" title="Revision 1"></a>Revision 1</h2><p>To bitwise <code>and</code> two number <code>n1</code> and <code>n2</code> is to take the common set bits. eg: <code>1100 &amp; 1011 = 1000</code>.<br>So, we only need to find the common <code>1s</code> for all of the number from <code>m</code> to <code>n</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> shift = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (n != m) &#123;</div><div class="line">    n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    m &gt;&gt;= <span class="number">1</span>; <span class="comment">// right shift n and m together at the same time, </span></div><div class="line">    shift++; <span class="comment">// if n == m, then it is the common "are" they have</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> n &lt;&lt; shift;</div></pre></td></tr></table></figure>
+<h2 id="Revision-2"><a href="#Revision-2" class="headerlink" title="Revision 2"></a>Revision 2</h2><p>Like the <a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">number-of-1-bits</a><br>The <code>n &amp; (n - 1)</code> will remove the right most <code>set bit</code> to <code>0</code>, this is like moving one step<br>closer to <code>m</code>. Or, in other word, making it more “alike” to <code>m</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeBitwiseAnd</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (n &gt; m) &#123;</div><div class="line">                    n &amp;= n - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">                <span class="keyword">return</span> n;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/12/bitwise-and-of-numbers-range/" data-id="cizc3lrbw000blbwvsa2ttrl0" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -505,7 +507,7 @@ n = n / 10; // push one position right
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -531,16 +533,12 @@ n = n / 10; // push one position right
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/02/hello-world/">Hello World</a>
           </li>
         
           <li>
@@ -553,6 +551,10 @@ n = n / 10; // push one position right
         
           <li>
             <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/06/kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
           </li>
         
       </ul>
@@ -568,7 +570,7 @@ n = n / 10; // push one position right
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Dongyan Li<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
