@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Arkiv: 2016/12 | Dongyan Li&#39;s Notebook</title>
+  <title>Reservoir Sampling | Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dongyan Li's Notebook">
-<meta property="og:url" content="http://yoursite.com/archives/2016/12/index.html">
+  <meta name="description" content="For the follow-up question, if the linked list is very long, we can’t put them into a array-based list and used a random index to get the result-there is not enough space doing that. Then, the only wa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reservoir Sampling">
+<meta property="og:url" content="http://yoursite.com/2017/01/08/ReservoirSampling/index.html">
 <meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="For the follow-up question, if the linked list is very long, we can’t put them into a array-based list and used a random index to get the result-there is not enough space doing that. Then, the only wa">
+<meta property="og:updated_time" content="2017-01-09T03:49:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:title" content="Reservoir Sampling">
+<meta name="twitter:description" content="For the follow-up question, if the linked list is very long, we can’t put them into a array-based list and used a random index to get the result-there is not enough space doing that. Then, the only wa">
   
     <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
@@ -59,77 +63,59 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/02/hello-world/" class="archive-article-date">
-  <time datetime="2016-12-02T18:01:53.000Z" itemprop="datePublished">Dec 2</time>
+        <section id="main"><article id="post-ReservoirSampling" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/08/ReservoirSampling/" class="article-date">
+  <time datetime="2017-01-08T20:29:46.000Z" itemprop="datePublished">2017-01-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/02/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      Reservoir Sampling
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/02/binary-search-and-variant/" class="archive-article-date">
-  <time datetime="2016-12-02T17:30:52.000Z" itemprop="datePublished">Dec 2</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
-    </h1>
-  
+        <p>For the <a href="https://leetcode.com/problems/linked-list-random-node/" target="_blank" rel="external">follow-up question</a>, if the linked list is very long, we can’t put them into a array-based list and used a random index to get the result-there is not enough space doing that. Then, the only way of solving the problem is to get the result while iterating the linked list.</p>
+<p><strong>We must get the random number as we iterate</strong></p>
+<ol>
+<li>For list of size 1, we just return that incoming node value;</li>
+<li>For list of size 2, we first <strong>keep</strong> the first one, when the second one comes, we return one of them with P = 1 / 2; </li>
+<li>How about size 3? We do the first two step the same as above, when the 3rd element comes, we return it as the result with P = 1 / 3. Remember that the 1st and 2nd element is chosen with P = 1 <em> 1 / 2 for the first two iteration, with 3rd one coming with P = 1 / 3 to be chosen as final result, the first two elements now have P = 1 / 2 </em> 2 / 3 = 1 / 3 chance to be chosen as the result;</li>
+<li>For size of n, we apply the same procedure, choose the nth element with P = 1 / n, thus every other element has P = 1 / (n - 1) * (n - 1) / n = 1 / n;</li>
+</ol>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/02/31-next-permutation/" class="archive-article-date">
-  <time datetime="2016-12-02T16:15:00.000Z" itemprop="datePublished">Dec 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/08/ReservoirSampling/" data-id="cizc3qqpn0000ppwvuorju4o9" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,46 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-additive-number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/30/additive-number/" class="article-date">
+  <time datetime="2016-08-30T14:59:43.000Z" itemprop="datePublished">2016-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/30/additive-number/">306.Additive Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/additive-number/" target="_blank" rel="external">https://leetcode.com/problems/additive-number/</a></p>
+<p>If we have first number and second one, the rest of numbers are <strong>determined</strong>.</p>
+<p>So we just select first and second number as many as possible and examine if the rest of the number is<br>the ones we want. Noted that the total length of the first and second number should be no more than the<br>rest of the numbers because addition only increase the length of the number. To prevent overflow from<br>large integer, we can use <code>BigInteger</code> since it supports arbitrary-precision integers.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.math.BigInteger;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAdditiveNumber</span><span class="params">(String num)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = num.length();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n / <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="comment">// i stops before midpoint because the length of result that i plus something &gt;= 0 need</span></div><div class="line">            <span class="comment">// to be &gt;= i.</span></div><div class="line">            <span class="keyword">if</span> (num.charAt(<span class="number">0</span>) == <span class="string">'0'</span> &amp;&amp; i &gt; <span class="number">1</span>) &#123;</div><div class="line">                <span class="comment">// number with leading 0 is not valid, but 0 alone is a valid number</span></div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            BigInteger i1 = <span class="keyword">new</span> BigInteger(num.substring(<span class="number">0</span>, i));</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; Math.max(i, j) &lt;= n - i - j; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (num.charAt(i) == <span class="string">'0'</span> &amp;&amp; j &gt; <span class="number">1</span>) &#123;</div><div class="line">                    <span class="comment">// 0 alone is valid number but number with leading 0 is not valid, check next</span></div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                BigInteger i2 = <span class="keyword">new</span> BigInteger(num.substring(i, i + j));</div><div class="line">                <span class="keyword">if</span> (isValid(i1, i2, num, i + j)) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(BigInteger i1, BigInteger i2, String num, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start == num.length()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        i2 = i2.add(i1); <span class="comment">// target number</span></div><div class="line">        i1 = i2.subtract(i1);</div><div class="line">        String target = i2.toString();</div><div class="line">        <span class="keyword">if</span> (num.startsWith(target, start)) &#123;</div><div class="line">            <span class="keyword">return</span> isValid(i1, i2, num, start + target.length());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/30/additive-number/" data-id="cizc3lrbf0007lbwvcpralvpz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-perfect-squares" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -71,9 +111,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/29/perfect-squares/">Perfect Squares</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="279-Perfect-Squares"><a href="#279-Perfect-Squares" class="headerlink" title="279. Perfect Squares"></a><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="external">279. Perfect Squares</a></h1><h2 id="Divide-and-conquer"><a href="#Divide-and-conquer" class="headerlink" title="Divide and conquer"></a>Divide and conquer</h2><p>For <code>f(n)</code> stands for the least number of perfect square numbers, then:</p>
+        <p><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="external">https://leetcode.com/problems/perfect-squares/</a></p>
+<h2 id="Divide-and-conquer"><a href="#Divide-and-conquer" class="headerlink" title="Divide and conquer"></a>Divide and conquer</h2><p>For <code>f(n)</code> stands for the least number of perfect square numbers, then:</p>
 <pre><code>f(n) = min (f(n - 1^2) + 1, f(n - 2^2) + 1, f(n - 3^2) + 1, ..., f(n - k^2) + 1)
 </code></pre><p>where n - k^2 &gt;= 0, f(0) = 0.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> rst = Integer.MAX_VALUE;</div><div class="line">        <span class="keyword">while</span> ((n - i * i) &gt;= <span class="number">0</span>) &#123;</div><div class="line">            rst = Math.min(rst, numSquares(n - i * i) + <span class="number">1</span>);</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> rst;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -94,32 +145,6 @@
 
 
   
-    <article id="post-valid-anagram" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/29/valid-anagram/" class="article-date">
-  <time datetime="2016-08-29T17:23:24.000Z" itemprop="datePublished">2016-08-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242. Valid Anagram"></a><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" rel="external">242. Valid Anagram</a></h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/29/valid-anagram/" data-id="cizc3lrdt000vlbwv2vek77du" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-binary-tree-preorder-traversal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/23/binary-tree-preorder-traversal/" class="article-date">
@@ -130,9 +155,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/23/binary-tree-preorder-traversal/">Binary Tree Preorder Traversal</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="144-Binary-Tree-Preorder-Traversal"><a href="#144-Binary-Tree-Preorder-Traversal" class="headerlink" title="144. Binary Tree Preorder Traversal"></a><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="external">144. Binary Tree Preorder Traversal</a></h1><h2 id="Recursive"><a href="#Recursive" class="headerlink" title="Recursive"></a>Recursive</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">	List&lt;Integer&gt; lst = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	pre(root, lst);</div><div class="line">	<span class="keyword">return</span> lst;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(TreeNode node, List&lt;Integer&gt; lst)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (node == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	lst.add(node.val);</div><div class="line">	pre(node.left, lst);</div><div class="line">	pre(node.right, lst);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="external">https://leetcode.com/problems/binary-tree-preorder-traversal/</a></p>
+<h2 id="Recursive"><a href="#Recursive" class="headerlink" title="Recursive"></a>Recursive</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">	List&lt;Integer&gt; lst = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	pre(root, lst);</div><div class="line">	<span class="keyword">return</span> lst;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(TreeNode node, List&lt;Integer&gt; lst)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (node == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	lst.add(node.val);</div><div class="line">	pre(node.left, lst);</div><div class="line">	pre(node.right, lst);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Iterative-solution"><a href="#Iterative-solution" class="headerlink" title="Iterative solution"></a>Iterative solution</h2><p>Pre-order, in-order, or post-order are all depth-first search (DFS). So, using a stack is clearly the way to go.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">	List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span> list;</div><div class="line">	&#125;</div><div class="line">	Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">	stack.push(root);</div><div class="line">	<span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">		TreeNode tn = stack.pop();</div><div class="line">		list.add(tn.val);</div><div class="line">		<span class="keyword">if</span> (tn.right != <span class="keyword">null</span>) &#123;</div><div class="line">			stack.push(tn.right);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (tn.left != <span class="keyword">null</span>) &#123;</div><div class="line">			stack.push(tn.left);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Cool-solution-Divide-amp-Conquer"><a href="#Cool-solution-Divide-amp-Conquer" class="headerlink" title="Cool solution (Divide &amp; Conquer)"></a>Cool solution (Divide &amp; Conquer)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">	List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">return</span> list;</div><div class="line">	&#125;</div><div class="line">	List&lt;Integer&gt; left = preorderTraversal(root.left);</div><div class="line">	List&lt;Integer&gt; right = preorderTraversal(root.right);</div><div class="line">	list.add(root.val);</div><div class="line">	list.addAll(left);</div><div class="line">	list.addAll(right);</div><div class="line">	<span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -160,9 +196,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/22/count-complete-tree-nodes/">Count Complete Tree Nodes</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="222-Count-Complete-Tree-Nodes"><a href="#222-Count-Complete-Tree-Nodes" class="headerlink" title="222. Count Complete Tree Nodes"></a><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="external">222. Count Complete Tree Nodes</a></h1><h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>If we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:</p>
+        <p><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="external">https://leetcode.com/problems/count-complete-tree-nodes/</a></p>
+<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>If we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + countNodes(root.left) + countNodes(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>The complexity is <code>O(n)</code> n is the number of nodes in the tree.</p>
 <h2 id="Better-one"><a href="#Better-one" class="headerlink" title="Better one"></a>Better one</h2><p>Since we know the tree is a complete binary tree, only the leaf nodes are not full. Hence, the number of nodes of every level of the tree except the last one is <code>2^d</code>, d is the depth of the node.</p>
@@ -198,9 +245,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/22/house-robber/">House Robber</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="198-House-Robber-https-leetcode-com-problems-house-robber"><a href="#198-House-Robber-https-leetcode-com-problems-house-robber" class="headerlink" title="(198. House Robber)[https://leetcode.com/problems/house-robber/]"></a>(198. House Robber)[<a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a>]</h1><h2 id="recursive-function"><a href="#recursive-function" class="headerlink" title="recursive function"></a>recursive function</h2><p>Define <code>rob(i, 1)</code> as the max money we can get if we <em>rob</em> the <code>ith</code> house, <code>rob(i, 0)</code> as max money we can get if we don’t rob ith house. Then:</p>
+        <p><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a></p>
+<h2 id="recursive-function"><a href="#recursive-function" class="headerlink" title="recursive function"></a>recursive function</h2><p>Define <code>rob(i, 1)</code> as the max money we can get if we <em>rob</em> the <code>ith</code> house, <code>rob(i, 0)</code> as max money we can get if we don’t rob ith house. Then:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rob(i, <span class="number">1</span>) = rob(i - <span class="number">1</span>, <span class="number">0</span>) + nums[i] <span class="comment">// i-1 th house can't be robbed</span></div><div class="line">rob(i, <span class="number">0</span>) = max(rob(i - <span class="number">1</span>, <span class="number">1</span>), rob(i - <span class="number">1</span>, <span class="number">0</span>)) <span class="comment">// doesn't matter if i-1 th hosue is robbed</span></div></pre></td></tr></table></figure>
 <p>Then, based on the idea above:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">1</span>) &#123;</div><div class="line">         reurn <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Math.max(rob(nums, nums.length - <span class="number">1</span>, <span class="number">1</span>), rob(nums, nums.length - <span class="number">1</span>, <span class="number">0</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> num, <span class="keyword">int</span> rob)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (rob == <span class="number">1</span>) &#123;</div><div class="line">           reuturn nums[<span class="number">0</span>];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (rob == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> Math.max(rob(nums, num - <span class="number">1</span>, <span class="number">0</span>), rob(nums, num - <span class="number">1</span>, <span class="number">1</span>));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> rob(nums, num - <span class="number">1</span>, <span class="number">0</span>) + nums[num];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -234,9 +292,20 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/18/add-and-search-word-data-structure-design/">211. Add and Search Word - Data structure design</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="211-Add-and-Search-Word-Data-structure-design"><a href="#211-Add-and-Search-Word-Data-structure-design" class="headerlink" title="211. Add and Search Word - Data structure design"></a><a href="https://leetcode.com/problems/add-and-search-word-data-structure-design/" target="_blank" rel="external">211. Add and Search Word - Data structure design</a></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordDictionary</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> TrieNode root = <span class="keyword">new</span> TrieNode();</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123; </div><div class="line">        <span class="comment">// declared static since don't need to refer any member of parent class</span></div><div class="line">        <span class="keyword">boolean</span> isEndOfWord;</div><div class="line">        TrieNode[] children;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TrieNode</span><span class="params">()</span> </span>&#123;</div><div class="line">            isEndOfWord = <span class="keyword">false</span>;</div><div class="line">            children = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Adds a word into the data structure.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWord</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (cur.children[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) &#123;</div><div class="line">                cur.children[c - <span class="string">'a'</span>] = <span class="keyword">new</span> TrieNode();</div><div class="line">            &#125;</div><div class="line">            cur = cur.children[c - <span class="string">'a'</span>];</div><div class="line">        &#125;    </div><div class="line">        cur.isEndOfWord = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Returns if the word is in the data structure. A word could</span></div><div class="line">    <span class="comment">// contain the dot character '.' to represent any one letter.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> search (word, root);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word, TrieNode root)</span> </span>&#123;</div><div class="line">        <span class="comment">// search for word start from cur TrieNode</span></div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = word.charAt(i);</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'.'</span>) &#123; <span class="comment">// skip current node</span></div><div class="line">                <span class="keyword">for</span> (TrieNode child : cur.children) &#123;</div><div class="line">                    <span class="comment">// try every child of the children of current node</span></div><div class="line">                    <span class="comment">// if any of them is true, then return true</span></div><div class="line">                    <span class="keyword">if</span> (child != <span class="keyword">null</span>) &#123;</div><div class="line">                        <span class="keyword">if</span> (search(word.substring(i + <span class="number">1</span>), child)) &#123;</div><div class="line">                            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (cur.children[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                cur = cur.children[c - <span class="string">'a'</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cur.isEndOfWord;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Your WordDictionary object will be instantiated and called as such:</span></div><div class="line"><span class="comment">// WordDictionary wordDictionary = new WordDictionary();</span></div><div class="line"><span class="comment">// wordDictionary.addWord("word");</span></div><div class="line"><span class="comment">// wordDictionary.search("pattern");</span></div></pre></td></tr></table></figure>
+        <p><a href="https://leetcode.com/problems/add-and-search-word-data-structure-design/" target="_blank" rel="external">https://leetcode.com/problems/add-and-search-word-data-structure-design/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordDictionary</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> TrieNode root = <span class="keyword">new</span> TrieNode();</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123; </div><div class="line">        <span class="comment">// declared static since don't need to refer any member of parent class</span></div><div class="line">        <span class="keyword">boolean</span> isEndOfWord;</div><div class="line">        TrieNode[] children;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TrieNode</span><span class="params">()</span> </span>&#123;</div><div class="line">            isEndOfWord = <span class="keyword">false</span>;</div><div class="line">            children = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Adds a word into the data structure.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWord</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (cur.children[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) &#123;</div><div class="line">                cur.children[c - <span class="string">'a'</span>] = <span class="keyword">new</span> TrieNode();</div><div class="line">            &#125;</div><div class="line">            cur = cur.children[c - <span class="string">'a'</span>];</div><div class="line">        &#125;    </div><div class="line">        cur.isEndOfWord = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Returns if the word is in the data structure. A word could</span></div><div class="line">    <span class="comment">// contain the dot character '.' to represent any one letter.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> search (word, root);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word, TrieNode root)</span> </span>&#123;</div><div class="line">        <span class="comment">// search for word start from cur TrieNode</span></div><div class="line">        TrieNode cur = root;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = word.charAt(i);</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'.'</span>) &#123; <span class="comment">// skip current node</span></div><div class="line">                <span class="keyword">for</span> (TrieNode child : cur.children) &#123;</div><div class="line">                    <span class="comment">// try every child of the children of current node</span></div><div class="line">                    <span class="comment">// if any of them is true, then return true</span></div><div class="line">                    <span class="keyword">if</span> (child != <span class="keyword">null</span>) &#123;</div><div class="line">                        <span class="keyword">if</span> (search(word.substring(i + <span class="number">1</span>), child)) &#123;</div><div class="line">                            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (cur.children[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                cur = cur.children[c - <span class="string">'a'</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cur.isEndOfWord;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Your WordDictionary object will be instantiated and called as such:</span></div><div class="line"><span class="comment">// WordDictionary wordDictionary = new WordDictionary();</span></div><div class="line"><span class="comment">// wordDictionary.addWord("word");</span></div><div class="line"><span class="comment">// wordDictionary.search("pattern");</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -261,9 +330,20 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/18/minimum-size-subarray-sum/">Minimum Size Subarray Sum</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="209-Minimum-Size-Subarray-Sum"><a href="#209-Minimum-Size-Subarray-Sum" class="headerlink" title="209. Minimum Size Subarray Sum"></a><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">209. Minimum Size Subarray Sum</a></h1><h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>Use <em>backtracking</em> to try every possible subarray. <code>O(n!)</code> complexity.</p>
+        <p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="external">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
+<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>Use <em>backtracking</em> to try every possible subarray. <code>O(n!)</code> complexity.</p>
 <p>Can we do better?</p>
 <h2 id="Two-pointer"><a href="#Two-pointer" class="headerlink" title="Two pointer"></a>Two pointer</h2><p>Use a <code>end</code> pointer to indicate the end index for the subarray; initially <code>start</code> is 0, if the sum of subarray is larger than <code>s</code>, gradually increase the <code>start</code> to make the subarray shorter. The <code>end</code> will traverse through the array giving out every possible subarray.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>, sum = <span class="number">0</span>; <span class="comment">// sum is the sum of subarray</span></div><div class="line"><span class="comment">// initialize the size of minimum subarray as max value</span></div><div class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</div><div class="line"><span class="keyword">while</span> (end &lt; nums.length) &#123;</div><div class="line">    sum += nums[end];</div><div class="line">    end++;</div><div class="line">    <span class="keyword">while</span> (sum &gt;= s) &#123;</div><div class="line">    <span class="comment">// if sum is larger than s, it's possible to "squeze" space of the subarray, hence, increase the start index</span></div><div class="line">        min = Math.min(min, end - start); <span class="comment">// no doubt there is a min</span></div><div class="line">        sum -= nums[start];</div><div class="line">        start++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> min == Integer.MAX_VALUE ? <span class="number">0</span> : min; </div><div class="line"><span class="comment">// if min is unchanged, then there's no such subarray such that sum &gt;= s</span></div></pre></td></tr></table></figure>
@@ -293,9 +373,20 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/18/course-schedule/">Course Schedule</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="207-Course-Schedule"><a href="#207-Course-Schedule" class="headerlink" title="207. Course Schedule"></a><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="external">207. Course Schedule</a></h1><p>Whether is possible to finish all the course depends on whether there is a <strong>circle prerequisites</strong> in the course list.<br>Hence, we only need to compute if there is a <strong>topological ordering</strong> of the courses.</p>
+        <p><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="external">https://leetcode.com/problems/course-schedule/</a></p>
+<p>Whether is possible to finish all the course depends on whether there is a <strong>circle prerequisites</strong> in the course list.<br>Hence, we only need to compute if there is a <strong>topological ordering</strong> of the courses.</p>
 <p>Steps of the algorithm (BFS):</p>
 <ol>
 <li>Find vertices with in-degree of <strong>0</strong>, put them into a <code>queue</code></li>
@@ -332,9 +423,20 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/count-primes/">Count Prime</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="204-Count-Primes"><a href="#204-Count-Primes" class="headerlink" title="204. Count Primes"></a><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">204. Count Primes</a></h1><blockquote>
+        <p><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">https://leetcode.com/problems/count-primes/</a></p>
+<blockquote>
 <p>A prime number is a number that is only divisible by 1 and itself</p>
 </blockquote>
 <h2 id="Version-1"><a href="#Version-1" class="headerlink" title="Version 1"></a>Version 1</h2><p>According to the definition of prime number, we can create<br>a function <code>isPrime</code> to test if a number n is a prime number:</p>
@@ -368,9 +470,20 @@ dp[i][1] = dp[i - 1][0] + nums[i];
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/happy-number/">Happy Number</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="202-Happy-Number"><a href="#202-Happy-Number" class="headerlink" title="202. Happy Number"></a><a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="external">202. Happy Number</a></h1><p>The key point for this question is to use a <code>Set</code> to keep recording<br>the number generated with each iteration. If we can’t add the new number<br>to the <code>Set</code>, the endless loop begins: return false. Another trick is to<br>get the last digit of a number, the</p>
+        <p><a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="external">https://leetcode.com/problems/happy-number/</a></p>
+<p>The key point for this question is to use a <code>Set</code> to keep recording<br>the number generated with each iteration. If we can’t add the new number<br>to the <code>Set</code>, the endless loop begins: return false. Another trick is to<br>get the last digit of a number, the</p>
 <pre><code>i = n % 10; // get the last digit
 n = n / 10; // push one position right
 </code></pre><p>would do that.</p>
@@ -408,9 +521,9 @@ n = n / 10; // push one position right
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -418,28 +531,28 @@ n = n / 10; // push one position right
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
+            <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
+            <a href="/2016/12/02/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/note-about-java/">(no title)</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
           </li>
         
       </ul>

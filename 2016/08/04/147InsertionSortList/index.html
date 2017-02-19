@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Dongyan Li&#39;s Notebook</title>
+  <title>147. Insertion Sort List | Dongyan Li&#39;s Notebook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="147. Insertion Sort ListThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the original list, we need to mak">
+  <meta name="description" content="https://leetcode.com/problems/insertion-sort-list/
+ThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the or">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dongyan Li's Notebook">
+<meta property="og:title" content="147. Insertion Sort List">
 <meta property="og:url" content="http://yoursite.com/2016/08/04/147InsertionSortList/index.html">
 <meta property="og:site_name" content="Dongyan Li's Notebook">
-<meta property="og:description" content="147. Insertion Sort ListThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the original list, we need to mak">
-<meta property="og:updated_time" content="2016-08-04T20:33:27.000Z">
+<meta property="og:description" content="https://leetcode.com/problems/insertion-sort-list/
+ThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the or">
+<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dongyan Li's Notebook">
-<meta name="twitter:description" content="147. Insertion Sort ListThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the original list, we need to mak">
+<meta name="twitter:title" content="147. Insertion Sort List">
+<meta name="twitter:description" content="https://leetcode.com/problems/insertion-sort-list/
+ThoughtThe idea is simple: we gradly build the sorted list the head of which is a dummyHead. However, extra caution is needed when we traverse the or">
   
     <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
   
@@ -54,7 +57,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -73,9 +76,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      147. Insertion Sort List
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="147-Insertion-Sort-List"><a href="#147-Insertion-Sort-List" class="headerlink" title="147. Insertion Sort List"></a><a href="https://leetcode.com/problems/insertion-sort-list/" target="_blank" rel="external">147. Insertion Sort List</a></h1><h2 id="Thought"><a href="#Thought" class="headerlink" title="Thought"></a>Thought</h2><p>The idea is simple: we gradly build the sorted list the head of which is a <code>dummyHead</code>. However, extra caution is needed when we traverse the original list, we need to make a copy of <code>next</code> of <code>head.next</code> before we insert the head into the new list since insertion will change where the <code>head.next</code> point to.</p>
+        <p><a href="https://leetcode.com/problems/insertion-sort-list/" target="_blank" rel="external">https://leetcode.com/problems/insertion-sort-list/</a></p>
+<h2 id="Thought"><a href="#Thought" class="headerlink" title="Thought"></a>Thought</h2><p>The idea is simple: we gradly build the sorted list the head of which is a <code>dummyHead</code>. However, extra caution is needed when we traverse the original list, we need to make a copy of <code>next</code> of <code>head.next</code> before we insert the head into the new list since insertion will change where the <code>head.next</code> point to.</p>
 <h2 id="How-to-insert-a-node"><a href="#How-to-insert-a-node" class="headerlink" title="How to insert a node?"></a>How to insert a node?</h2><p>Given the <code>head</code> of a sorted LinkedList, how to insert the <code>node</code> into proper place?</p>
 <p>The proper <code>slot</code> is the one that <code>head.val &lt; node.val</code> and <code>head.next.val &gt; node.val</code> if <code>head.next != null</code>, then make<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tmp = head.next; </div><div class="line">head.next = node; </div><div class="line">node.next = tmp;</div></pre></td></tr></table></figure></p>
 <p>If <code>head.next == null</code>, then we just append to the <code>head</code>: <code>head.next = node</code>, however, if we add <code>tmp = head.next</code>, it would hurt, <code>tmp</code> simply <code>== null</code>.</p>
@@ -97,7 +111,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Find Minimum in Rotated Sorted Array
         
       </div>
     </a>
@@ -105,7 +119,7 @@
   
     <a href="/2016/08/04/143.ReorderList/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">143. Reorder List</div>
     </a>
   
 </nav>
@@ -127,9 +141,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -137,28 +151,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/12/02/binary-search-and-variant/">(no title)</a>
+            <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
           </li>
         
           <li>
-            <a href="/2016/12/02/31-next-permutation/">(no title)</a>
+            <a href="/2016/12/02/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2016/11/30/longest-substring-without-repeating-characters/">(no title)</a>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/kth-largest-element-in-an-array/">(no title)</a>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
           </li>
         
           <li>
-            <a href="/2016/09/06/note-about-java/">(no title)</a>
+            <a href="/2016/11/30/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a>
           </li>
         
       </ul>
