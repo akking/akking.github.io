@@ -1,12 +1,249 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dongyan Li&#39;s Notebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="dongyan li&apos;s blog for programming related topics">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dongyan Li's Notebook">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="dongyan li&apos;s blog for programming related topics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dongyan Li's Notebook">
+<meta name="twitter:description" content="dongyan li&apos;s blog for programming related topics">
+  
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block container
-    include mixins/post
-    +posts()
+</head>
 
-block pagination
-    include mixins/paginator
-    +home()
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Curiosity Driven, Life Long</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-143.ReorderList" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/04/143.ReorderList/" class="article-date">
+  <time datetime="2016-08-04T18:54:32.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/143.ReorderList/">143. Reorder List</a>
+    </h1>
+  
 
-block copyright
-    include partial/copyright
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">https://leetcode.com/problems/reorder-list/</a></p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution:"></a>solution:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public void reorderList(ListNode head) &#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        ListNode slow = head, fast = head;</div><div class="line">        while (fast.next != null &amp;&amp; fast.next.next != null) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next.next;</div><div class="line">        &#125;</div><div class="line">        // slow is end of first part of list</div><div class="line">        ListNode sndHead = reverse(slow.next);</div><div class="line">        slow.next = null;</div><div class="line">        while (sndHead != null) &#123;</div><div class="line">            ListNode headNext = head.next;</div><div class="line">            head.next = sndHead;</div><div class="line">            ListNode sndHeadNext = sndHead.next;</div><div class="line">            sndHead.next = headNext;</div><div class="line">            head = headNext;</div><div class="line">            sndHead = sndHeadNext;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    private ListNode reverse(ListNode node) &#123;</div><div class="line">        // reverse linked list from node to the end, return the new head</div><div class="line">        ListNode prev = null, next = null, current = node;</div><div class="line">        while (current != null) &#123;</div><div class="line">            next = current.next;</div><div class="line">            current.next = prev;</div><div class="line">            prev = current;</div><div class="line">            current = next;</div><div class="line">        &#125;</div><div class="line">        return prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-steps"><a href="#3-steps" class="headerlink" title="3 steps:"></a>3 steps:</h2><ol>
+<li>find the middle point which seperates the list into two parts</li>
+<li>reverse the 2nd part of list</li>
+<li>“stich” two parts of list together one by one. </li>
+</ol>
+<h2 id="What-I-did-wrong-After-thought"><a href="#What-I-did-wrong-After-thought" class="headerlink" title="What I did wrong: (After thought)"></a>What I did wrong: (After thought)</h2><p>I can’t find the ending condition for the <code>while</code> loop below, since we are stiching the two list together, we need to find the list which is <strong>shorter</strong>, in other word: which exhaust first. Otherwise, <code>null pointer</code> <em>everywhere</em>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">while (sndHead != null) &#123;</div><div class="line">            ListNode headNext = head.next;</div><div class="line">            head.next = sndHead;</div><div class="line">            ListNode sndHeadNext = sndHead.next;</div><div class="line">            sndHead.next = headNext;</div><div class="line">            head = headNext;</div><div class="line">            sndHead = sndHeadNext;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/04/143.ReorderList/" data-id="cj12lzvhj00015az5h2nu0aac" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ReverseLinkedListII" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/04/ReverseLinkedListII/" class="article-date">
+  <time datetime="2016-08-04T16:31:12.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/ReverseLinkedListII/">Reverse Linked List II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="external">https://leetcode.com/problems/reverse-linked-list-ii/</a></p>
+<p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
+<p>For example:<br>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</code></p>
+<p>return <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</code></p>
+<p>Note:<br>Given m, n satisfy the following condition:<br>1 ≤ m ≤ n ≤ length of list.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><p>This problem is a “harder” versio of the <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">206. Reverse Linked List</a><br>I followed the idea of <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">206. Reverse Linked List</a> by first find the<br><code>head</code> of the linked list that we need to reverse, then the <code>tail</code>, which is <code>null</code> for the previous qustion. Then start with <code>head</code>,<br>reverse the linkedlist until we reach the <code>tail</code> node:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public ListNode reverseBetween(ListNode head, int m, int n) &#123;</div><div class="line">        ListNode start = head, pre = null, end = head;</div><div class="line">        for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">            if (i &lt; m - 1) &#123;</div><div class="line">                pre = start;</div><div class="line">                start = start.next;</div><div class="line">            &#125;</div><div class="line">            end = end.next;</div><div class="line">        &#125;</div><div class="line">        ListNode newHead = null, current = start, next = null;</div><div class="line">        while (current != end) &#123;</div><div class="line">            next = current.next;</div><div class="line">            current.next = newHead;</div><div class="line">            newHead = current;</div><div class="line">            current = next;</div><div class="line">        &#125;</div><div class="line">        if (pre != null) &#123;</div><div class="line">            pre.next = newHead;</div><div class="line">        &#125; else &#123;</div><div class="line">            head = newHead;</div><div class="line">        &#125;</div><div class="line">        start.next = end;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/04/ReverseLinkedListII/" data-id="cj12lzvhu00065az5cgnknp34" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/08/ReconstructEulerianPath/">ReconstructEulerianPath</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/24/buildRpiHadoopCluster/">Building a Hadoop cluser using Raspberry Pi</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dongyan Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

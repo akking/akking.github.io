@@ -1,20 +1,239 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>House Robber III | Dongyan Li&#39;s Notebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/problems/house-robber-iii/
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house">
+<meta property="og:type" content="article">
+<meta property="og:title" content="House Robber III">
+<meta property="og:url" content="http://yoursite.com/2016/09/06/house-robber-iii/index.html">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="https://leetcode.com/problems/house-robber-iii/
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house">
+<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="House Robber III">
+<meta name="twitter:description" content="https://leetcode.com/problems/house-robber-iii/
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house">
+  
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block site_title
-    != page.title + " · " + config.title
+</head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Curiosity Driven, Life Long</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-house-robber-iii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/06/house-robber-iii/" class="article-date">
+  <time datetime="2016-09-06T16:35:02.000Z" itemprop="datePublished">2016-09-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      House Robber III
+    </h1>
+  
 
-block container
-    include mixins/post
-    +post(page)
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/house-robber-iii/" target="_blank" rel="external">https://leetcode.com/problems/house-robber-iii/</a></p>
+<p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
+<p>Determine the maximum amount of money the thief can rob tonight without alerting the police.</p>
+<p><strong>Example 1:</strong>  </p>
+<pre><code>  3
+ / \
+2   3
+ \   \
+  3   1
+</code></pre><p>Maximum amount of money the thief can rob = 3 + 3 + 1 = <strong>7</strong>.</p>
+<p><strong>Example 2:</strong>  </p>
+<pre><code>    3
+   / \ 
+  4   5
+ / \   \
+1   3   1
+</code></pre><p>Maximum amount of money the thief can rob = 4 + 5 = <strong>9</strong>.</p>
+<h2 id="Recursive-function"><a href="#Recursive-function" class="headerlink" title="Recursive function"></a>Recursive function</h2><p>If we rob a <code>node</code>, then all its children can’t be robbed due to alarm but the children of its children are available to rob.</p>
+<p>If we define <code>rob(node)</code> as the max amount of money the thief can get if he robs this tree and <code>node</code> is the root of the tree, then</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(Node root)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</div><div class="line">        max += rob(root.left.left) + rob(root.left.right);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) &#123;</div><div class="line">        max += rob(root.right.left) + rob(root.right.right);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Math.max(max + root.val, rob(root.left) + rob(root.right));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><p>The above function works. However, there’s overlaps among the functions calls since this is a <code>DFS</code> kind of recursive calls. I can use a cache to store the value to avoid re-computation.</p>
+<p>Use a <code>Map</code> to cache the result of <code>node</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Map&lt;TreeNode, Integer&gt; cache = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (cache == <span class="keyword">null</span>) &#123;</div><div class="line">            cache = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">            cache.put(<span class="keyword">null</span>, <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (cache.containsKey(root)) &#123;</div><div class="line">            <span class="keyword">return</span> cache.get(root);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</div><div class="line">            max += rob(root.left.left) + rob(root.left.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) &#123;</div><div class="line">            max += rob(root.right.left) + rob(root.right.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> rst = Math.max(max + root.val, rob(root.left) + rob(root.right));</div><div class="line">        cache.put(root, rst);</div><div class="line">        <span class="keyword">return</span> rst;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Alternative-solution"><a href="#Alternative-solution" class="headerlink" title="Alternative solution"></a>Alternative solution</h2><p>For a <code>TreeNode root</code>, only 2 possible way to do with it: either rob this root or not.<br>We can use a <code>int[2]</code> to represent the two scenarios. <code>[0]</code> means the max amount of money we get <strong>not</strong> to rob the node, <code>[1]</code> means the max money we get if we rob.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Math.max(robArr(root)[<span class="number">0</span>], robArr(root)[<span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] robArr(TreeNode root) &#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span>[] left = robArr(root.left);</div><div class="line">        <span class="keyword">int</span>[] right = robArr(root.right);</div><div class="line">        <span class="keyword">int</span> notRob = Math.max(left[<span class="number">0</span>], left[<span class="number">1</span>]) + Math.max(right[<span class="number">0</span>], right[<span class="number">1</span>]);</div><div class="line">        <span class="keyword">int</span> rob = root.val + left[<span class="number">0</span>] + right[<span class="number">0</span>];</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;notRob, rob&#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/06/house-robber-iii/" data-id="cj12lzvij000l5az5eintsn16" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/06/note-about-java/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Discovery
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/01/maximum-product-of-word-lengths/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Maximum Product of Word Lengths</div>
+    </a>
+  
+</nav>
 
-block copyright
-    include partial/copyright
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/08/ReconstructEulerianPath/">ReconstructEulerianPath</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/24/buildRpiHadoopCluster/">Building a Hadoop cluser using Raspberry Pi</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dongyan Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,20 +1,230 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Count Complete Tree Nodes | Dongyan Li&#39;s Notebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/problems/count-complete-tree-nodes/
+Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solutio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Count Complete Tree Nodes">
+<meta property="og:url" content="http://yoursite.com/2016/08/22/count-complete-tree-nodes/index.html">
+<meta property="og:site_name" content="Dongyan Li's Notebook">
+<meta property="og:description" content="https://leetcode.com/problems/count-complete-tree-nodes/
+Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solutio">
+<meta property="og:updated_time" content="2016-12-11T21:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Count Complete Tree Nodes">
+<meta name="twitter:description" content="https://leetcode.com/problems/count-complete-tree-nodes/
+Brutal forceIf we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:
+123456public class Solutio">
+  
+    <link rel="alternate" href="/atom.xml" title="Dongyan Li&#39;s Notebook" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block site_title
-    != page.title + " · " + config.title
+</head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dongyan Li&#39;s Notebook</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Curiosity Driven, Life Long</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-count-complete-tree-nodes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/22/count-complete-tree-nodes/" class="article-date">
+  <time datetime="2016-08-22T16:04:21.000Z" itemprop="datePublished">2016-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Count Complete Tree Nodes
+    </h1>
+  
 
-block container
-    include mixins/post
-    +post(page)
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="external">https://leetcode.com/problems/count-complete-tree-nodes/</a></p>
+<h2 id="Brutal-force"><a href="#Brutal-force" class="headerlink" title="Brutal force"></a>Brutal force</h2><p>If we ignore the fact that the tree is complete, then we just count compute the number of nodes naively:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + countNodes(root.left) + countNodes(root.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The complexity is <code>O(n)</code> n is the number of nodes in the tree.</p>
+<h2 id="Better-one"><a href="#Better-one" class="headerlink" title="Better one"></a>Better one</h2><p>Since we know the tree is a complete binary tree, only the leaf nodes are not full. Hence, the number of nodes of every level of the tree except the last one is <code>2^d</code>, d is the depth of the node.</p>
+<p>Based on the brutal force method, we could add some code to return the result immediately if the tree with <code>root</code> is a full binary tree:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> h = <span class="number">0</span>;</div><div class="line">        TreeNode left = root, right = root;</div><div class="line">        <span class="keyword">while</span> (right != <span class="keyword">null</span>) &#123;</div><div class="line">            left = left.left;</div><div class="line">            right = right.right;</div><div class="line">            h++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (left == <span class="keyword">null</span>) &#123; <span class="comment">// is a full binary tree, number of node is 2^(heigth + 1) - 1</span></div><div class="line">            <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; h) - <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span> + countNodes(root.left) + countNodes(root.right);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>At least one of the two recursive calls will return immediately since at least one of them is a full binary tree</strong>. Proof:</p>
+<ul>
+<li>If left subtree is not full binary tree, the right is full has one less height of left one.</li>
+<li>If right subtree is not full binary tree, the left must be.</li>
+</ul>
+<p>So, since one of the recursive call will return, it is essentially <em>cut in half binary search</em> complexity. And each countNode() has a <code>O(logn)</code> for the depth of the tree. So <code>O((logn)^2)</code></p>
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/22/count-complete-tree-nodes/" data-id="cj12lzvi5000c5az5va9m2fkw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/23/binary-tree-preorder-traversal/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Binary Tree Preorder Traversal
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/22/house-robber/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">House Robber</div>
+    </a>
+  
+</nav>
 
-block copyright
-    include partial/copyright
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/08/ReconstructEulerianPath/">ReconstructEulerianPath</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/24/buildRpiHadoopCluster/">Building a Hadoop cluser using Raspberry Pi</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/08/ReservoirSampling/">Reservoir Sampling</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/binary-search-and-variant/">Binary Search related topics</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/31-next-permutation/">31. Next Permutation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dongyan Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
